@@ -13,6 +13,7 @@ const NAV_LINKS = [
   { path: "/news", label: "NEWS" },
   { path: "/shop", label: "SHOP" },
   { path: "/sponsors", label: "SPONSORS" },
+  { path: "/joinUs", label: "JOIN US" },
   { path: "/contacts", label: "CONTACTS" },
 ];
 
@@ -81,8 +82,8 @@ export default function MyNavbar() {
       className={`[body.popup-open_&]:hidden h-[12vh] xl:h-[14vh] left-0 top-0 z-1000 w-full fixed text-[clamp(2vh,2vw,5vh)] transition-all ${isOpen ? "duration-0" : "duration-300"} ${scrolled && !isOpen ? "backdrop-blur-sm bg-black/60" : "bg-transparent backdrop-blur-none"}`}
       aria-label="Main Navigation"
     >
-      <div className="hidden xl:flex w-[85%] h-[1vh] absolute bottom-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-[linear-gradient(to_right,transparent,_#97bddc,_#3293e0,_#97bddc,_transparent)]"></div>
-      <ul className="hidden xl:flex px-5 w-full h-full justify-around items-center list-none">
+      <div className="hidden xl:flex w-[87%] h-[1vh] absolute bottom-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-[linear-gradient(to_right,transparent,_#97bddc,_#3293e0,_#97bddc,_transparent)]"></div>
+      <ul className="hidden xl:flex w-full h-full justify-around items-center list-none">
         <li className="h-[80%]">
           <InternalNavigationLink
             path="/"
@@ -111,7 +112,8 @@ export default function MyNavbar() {
             <InternalNavigationLink path={path}>{label}</InternalNavigationLink>
           </li>
         ))}
-        <li className="aspect-[207/169] h-full"></li>
+        {/* <li className="aspect-[207/169] h-full"></li> */}
+        <li className="w-[5vw]"></li>
       </ul>
       <div
         className={`fixed inset-0 z-30 transition-all transition-[backdrop-filter] duration-300 h-screen pointer-events-none ${
