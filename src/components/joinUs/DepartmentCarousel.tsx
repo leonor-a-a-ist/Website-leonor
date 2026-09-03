@@ -8,8 +8,6 @@ interface DepartmentCarouselProps {
 }
 
 export default function DepartmentCarousel({ title, cards }: DepartmentCarouselProps) {
-  const GAP_PX = 16;
-
   const [flippedIndex, setFlippedIndex] = useState<number | null>(null);
   const isMobile = false;
 
@@ -61,7 +59,7 @@ export default function DepartmentCarousel({ title, cards }: DepartmentCarouselP
   };
 
   const translateStyle = {
-    transform: `translateX(calc(-${currentIndex * 100}% - ${currentIndex * GAP_PX}px))`,
+    transform: `translateX(-${currentIndex * 100}%)`,
   };
 
   return (
@@ -121,13 +119,13 @@ export default function DepartmentCarousel({ title, cards }: DepartmentCarouselP
           {title}
         </h2>
         <div
-          className="grid gap-6
+          className="grid gap-[2vw] lg:gap-[3vw] justify-center
             grid-cols-[repeat(auto-fill,80vw)]
             sm:grid-cols-[repeat(auto-fill,42vw)]
             md:grid-cols-[repeat(auto-fill,30vw)]
             lg:grid-cols-[repeat(auto-fill,25vw)]
             xl:grid-cols-[repeat(auto-fill,23vw)]
-            2xl:grid-cols-[repeat(auto-fill,15vw)]"
+            2xl:grid-cols-[repeat(auto-fill,20vw)]"
         >
           {cards.map((card, index) => (
             <SingleCard card={card} isMobile={isMobile} isFlipped={flippedIndex === index} />

@@ -4,27 +4,26 @@ import DepartmentCarousel from "./DepartmentCarousel";
 export default function DepartmentCards() {
   return (
     <div className="w-full flex justify-center mt-[10vh] mb-[5vh]">
-      <div className="intems-center justify-center">
-        <div className="flex flex-col gap-20">
+      <div className="w-[95vw] intems-center justify-center">
+        <div className="flex flex-col items-center gap-[6vh]">
           <div>
-            <h1 className="text-white text-[7vw] md:text-[5vw] xl:text-[3vw] font-bold leading-tight text-center">
+            <h1 className="text-white text-[7vw] md:text-[5vw] xl:text-[3vw] font-bold leading-tight text-center mb-6">
               Our Departments
             </h1>
 
-            <p className="text-[3.7vw] sm:text-[2.5vw] md:text-[1.8vw] lg:text-[1.3vw] 2xl:text-[1vw] text-gray-300 leading-relaxed text-center">
-              bla bla...
+            <p className="text-[4vw] sm:text-[2.7vw] md:text-[2vw] lg:text-[1.5vw] 2xl:text-[1.2vw] text-gray-300 leading-relaxed text-center">
+              Discover our departments and find the area that best fits your interests and skills.
+              Join the team, learn new things, and help us build TLMoto.
             </p>
           </div>
 
-          <div className="flex flex-col md:flex-row justify-center gap-[3vw] w-[90vw]">
-            {/* Left column */}
-            <div className="md:w-[50%] lg:w-[60%]">
+          <div className="flex flex-col gap-[7vh] w-[90vw] md:w-[100vw] lg:w-[85vw] 2xl:w-[70vw]">
+            <div>
               <DepartmentCarousel title="TECHNICAL DEPARTMENTS" cards={joinUsCards.technical} />
             </div>
 
-            {/* Right column */}
-            <div className="md:w-[50%] lg:w-[40%]">
-              <DepartmentCarousel title="MANAGEMENT DEPARTMENTS" cards={joinUsCards.management} />
+            <div>
+              <DepartmentCarousel title="OPERATIONAL DEPARTMENTS" cards={joinUsCards.operational} />
             </div>
           </div>
         </div>

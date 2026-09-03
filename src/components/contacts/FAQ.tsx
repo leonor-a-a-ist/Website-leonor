@@ -9,8 +9,8 @@ export default function FAQ() {
   };
 
   return (
-    <div className="mx-auto w-[80vw] md:w-[50vw] mt-[4vh] text-white p-2.5 pb-[10vw] mb-[10vh] md:mb-[5vh] lg:mb-[0vh]">
-      <h2 className="text-center text-[4.5vw] sm:text-[3vw] md:text-[2.5vw] lg:text-[2vw] 2xl:text-[1.5vw] underline mb-[2vh]">
+    <div className="mx-auto w-[80vw] md:w-[50vw] text-white p-2.5 mb-[10vh] md:mb-[5vh] lg:mb-[0vh]">
+      <h2 className="text-[4.5vw] sm:text-[3vw] md:text-[2.5vw] lg:text-[2vw] 2xl:text-[1.5vw] font-bold text-white text-center">
         Frequently Asked Questions
       </h2>
       {faqs.map((faq, index) => (

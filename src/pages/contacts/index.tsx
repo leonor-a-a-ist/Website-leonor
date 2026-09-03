@@ -47,7 +47,7 @@ export default function Contacts() {
           </div>
         </div>
 
-        <FAQ />
+        {/* <FAQ /> */}
       </MyDefaultPage>
     </div>
   );
