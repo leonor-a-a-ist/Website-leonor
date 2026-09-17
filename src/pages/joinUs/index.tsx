@@ -191,10 +191,10 @@ export default function JoinUs() {
           <DepartmentsTemplate />
         </div>
 
-        <div className="w-full max-w-[85%] mx-auto mt-[10vh] mb-[17vh] md:mb-[15vh]">
+        {/* <div className="w-full max-w-[85%] mx-auto mt-[10vh] mb-[17vh] md:mb-[15vh]">
           <div className="h-px w-full bg-white/15 mb-[3vh]" />
           <FAQ />
-        </div>
+        </div> */}
       </MyDefaultPage>
     </>
   );

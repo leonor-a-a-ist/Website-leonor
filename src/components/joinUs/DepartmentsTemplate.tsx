@@ -7,7 +7,7 @@ export default function DepartmentCards() {
   const [selectedDepartment, setSelectedDepartment] = useState<DepartmentCardData | null>(null);
 
   return (
-    <div className="w-full flex justify-center mt-[10vh] mb-[5vh]">
+    <div className="w-full flex justify-center mt-[10vh] mb-[12vh]">
       <div className="w-[95vw] intems-center justify-center">
         <div className="flex flex-col items-center gap-[6vh]">
           <div>
