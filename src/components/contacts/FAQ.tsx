@@ -17,7 +17,7 @@ export default function FAQ() {
         <div key={index} className="border-b border-white/30 py-[1.5vh]">
           <button
             onClick={() => toggleFAQ(index)}
-            className={`w-full flex justify-between items-center text-left font-bold text-[4vw] sm:text-[2.7vw] md:text-[2vw] lg:text-[1.5vw] 2xl:text-[1.2vw] 
+            className={`w-full flex justify-between items-center text-left font-bold cursor-pointer text-[4vw] sm:text-[2.7vw] md:text-[2vw] lg:text-[1.5vw] 2xl:text-[1.2vw] 
                              transition-colors ${openIndex === index ? "texclt-[#39a6ff]" : "text-white hover:text-[#39a6ff]"}`}
           >
             {faq.question}

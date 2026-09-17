@@ -1,13 +1,14 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import SingleCard from "./SingleCard";
 import { DepartmentCardData } from "../textContent/DepartmentsTexts";
 
 interface DepartmentCarouselProps {
   title: string;
   cards: DepartmentCardData[];
+  onSelectDep: (department: DepartmentCardData) => void;
 }
 
-export default function DepartmentCarousel({ title, cards }: DepartmentCarouselProps) {
+export default function DepartmentCarousel({ title, cards, onSelectDep }: DepartmentCarouselProps) {
   const [flippedIndex, setFlippedIndex] = useState<number | null>(null);
   const isMobile = false;
 
@@ -66,7 +67,7 @@ export default function DepartmentCarousel({ title, cards }: DepartmentCarouselP
     <div className="w-full">
       <div className="md:hidden">
         <section>
-          <h2 className="text-[4.5vw] sm:text-[3vw] md:text-[2.5vw] lg:text-[2vw] 2xl:text-[1.5vw] font-bold text-white text-center">
+          <h2 className="text-[4.5vw] sm:text-[3.3vw] md:text-[2.5vw] lg:text-[2vw] 2xl:text-[1.7vw] font-bold text-white text-center">
             {title}
           </h2>
 
@@ -87,6 +88,7 @@ export default function DepartmentCarousel({ title, cards }: DepartmentCarouselP
                       card={card}
                       isMobile={!isMobile}
                       isFlipped={flippedIndex === index}
+                      onClick={() => onSelectDep(card)}
                     />
                   </div>
                 ))}
@@ -128,7 +130,12 @@ export default function DepartmentCarousel({ title, cards }: DepartmentCarouselP
             2xl:grid-cols-[repeat(auto-fill,20vw)]"
         >
           {cards.map((card, index) => (
-            <SingleCard card={card} isMobile={isMobile} isFlipped={flippedIndex === index} />
+            <SingleCard
+              card={card}
+              isMobile={isMobile}
+              isFlipped={flippedIndex === index}
+              onClick={() => onSelectDep(card)}
+            />
           ))}
         </div>
       </div>

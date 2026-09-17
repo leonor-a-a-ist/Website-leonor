@@ -11,7 +11,7 @@ const NAV_LINKS = [
   { path: "/team", label: "TEAM" },
   { path: "/history", label: "HISTORY" },
   { path: "/news", label: "NEWS" },
-  { path: "/shop", label: "SHOP" },
+  //{ path: "/shop", label: "SHOP" },
   { path: "/sponsors", label: "SPONSORS" },
   { path: "/joinUs", label: "JOIN US" },
   { path: "/contacts", label: "CONTACTS" },
