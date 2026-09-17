@@ -3,6 +3,7 @@ import { getNewsletterPages, WorkerNewsletter } from "@/src/components/utils/Fet
 import HTMLFlipBook from "react-pageflip";
 import Image from "next/image";
 import NavigationButton from "@/src/components/news/NavigationButton";
+import { createPortal } from "react-dom";
 
 const loadingText = ["A carregar páginas...", "Loading pages..."];
 
@@ -44,6 +45,11 @@ export default function NewsletterModal({
   const [pages, setPages] = useState<string[]>([]); // array of urls
   const [visiblePage, setVisiblePage] = useState(0); // index for the currently visible left page (0-based, even numbers only)
   const [realTotal, setRealTotal] = useState(0);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   // handles navigation between pages, including mouse wheel and keyboard events
   type FlipBookRef = {
@@ -178,18 +184,16 @@ export default function NewsletterModal({
 
     document.body.style.overflow = "hidden";
     document.documentElement.style.overflow = "hidden";
-    document.body.classList.add("popup-open");
 
     return () => {
       document.body.style.overflow = "";
       document.documentElement.style.overflow = "";
-      document.body.classList.remove("popup-open");
     };
   }, [newsletter]);
 
-  if (!newsletter) return null;
+  if (!newsletter || !mounted) return null;
 
-  return (
+  return createPortal(
     <div
       className="fixed inset-0 bg-black/85 z-[1001] flex justify-center items-center"
       onClick={onClose} /* clicking outside the modal closes it */
@@ -286,6 +290,7 @@ export default function NewsletterModal({
           )}
         </div>
       </div>
-    </div>
+    </div>,
+    document.body
   );
 }
