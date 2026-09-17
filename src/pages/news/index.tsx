@@ -1,16 +1,36 @@
+import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
+import { WorkerNewsletter, getNewsletters } from "@/src/components/utils/FetchNewsletters";
 import SubscribePopup from "@/src/components/utils/SubscribePopup";
 import NewsCoverflowEffect from "@/src/components/news/NewsCoverflowEffect";
 import MyDefaultPage from "@/src/components/DefaultPage";
 import LanguageSelector from "@/src/components/news/LanguageSelector";
 import NewsletterViewer from "@/src/components/news/NewsletterViewer";
-import { WorkerNewsletter } from "@/src/components/utils/FetchNewsletters";
 import SeoHead from "@/src/components/layout/SeoHead";
 
 export default function News() {
   const [language, setLanguage] = useState<"pt" | "en">("pt");
   const [isPopupOpen, setIsPopupOpen] = useState(false);
-  const [selectedNewsletter, setSelectedNewsletter] = useState<WorkerNewsletter | null>(null);
+
+  // all newsletters from the worker - initially empty
+  const [workerNewsletters, setWorkerNewsletters] = useState<WorkerNewsletter[]>([]);
+
+  const router = useRouter();
+  const selectedNewsletter = workerNewsletters.find(n => n.slug === router.query.newsletter);
+
+  const openNewsletter = (newsletter: WorkerNewsletter) => {
+    // updates the URL with the selected newsletter's slug without reloading the page
+    router.push(
+      {
+        pathname: "/news",
+        query: {
+          newsletter: newsletter.slug,
+        },
+      },
+      undefined,
+      { shallow: true }
+    );
+  };
 
   const handleSubscribeClick = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -23,10 +43,22 @@ export default function News() {
     if (navigator.language.startsWith("en")) setLanguage("en");
   }, []);
 
+  // fetches newsletters from the worker based on the selected language
+  useEffect(() => {
+    const controller = new AbortController();
+    getNewsletters(language, controller.signal)
+      .then(setWorkerNewsletters)
+      .catch(err => {
+        if (err.name !== "AbortError") console.error(err);
+      });
+
+    return () => controller.abort();
+  }, [language]);
+
   return (
     <>
       <SeoHead
-        title={`News`}
+        title="News"
         description={`Discover the latest news and updates from TLMOTO, your favorite student motorsport team.`}
       />
       <MyDefaultPage>
@@ -38,8 +70,9 @@ export default function News() {
           <div>
             <NewsCoverflowEffect
               language={language}
+              workerNewsletters={workerNewsletters}
               onSubscribeClick={handleSubscribeClick}
-              onNewsletterClick={setSelectedNewsletter}
+              onNewsletterClick={openNewsletter}
             />
           </div>
         </div>
@@ -47,7 +80,12 @@ export default function News() {
           <NewsletterViewer
             language={language}
             newsletter={selectedNewsletter}
-            onClose={() => setSelectedNewsletter(null)}
+            onClose={() =>
+              // updates the URL to remove the newsletter query parameter
+              router.push("/news", undefined, {
+                shallow: true,
+              })
+            }
           />
         )}
         <SubscribePopup isOpen={isPopupOpen} onClose={() => setIsPopupOpen(false)} />

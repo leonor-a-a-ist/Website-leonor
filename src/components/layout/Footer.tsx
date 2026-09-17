@@ -44,7 +44,7 @@ export default function MyFooter() {
   return (
     <footer
       id="section_footer"
-      className="absolute bottom-0 left-0 w-full text-white py-[2vh] px-[2vw] z-30 [body.popup-open_&]:hidden"
+      className="absolute bottom-0 left-0 w-full text-white py-[2vh] px-[2vw] z-30"
       aria-label="Site Footer"
     >
       <div className="flex flex-col justify-between items-center gap-[0.5vh] md:flex-row">
