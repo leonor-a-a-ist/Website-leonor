@@ -189,6 +189,11 @@ const tecDepartmentsTexts: DepartmentCardData[] = [
         src: "/images/joinUs/pow/tech3.webp",
         alt: "tech3",
       },
+            {
+        type: "image",
+        src: "/images/joinUs/pow/tech4.webp",
+        alt: "tech4",
+      },
     ],
     icon: Cog,
   },
