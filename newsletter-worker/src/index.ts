@@ -6,7 +6,7 @@
 
 import { Hono } from 'hono';
 import { cors } from 'hono/cors';
-import { hasValidName, parseFileName, getMonthName } from './utils';
+import { hasValidName, parseFileName, getMonthName, isValidEmail } from './utils';
 import { adminRoutes } from './admin/admin';
 import * as storage from './services/storage';
 import * as database from './services/database';
@@ -35,6 +35,8 @@ app.use(
 app.route('/admin', adminRoutes);
 
 // -------------------------------- ROUTES --------------------------------
+
+/* ######################### NEWSLETTERS ######################### */
 
 /**
  * upload PDF route - used to upload a new newsletter PDF to R2 storage
@@ -210,6 +212,79 @@ app.patch('/visibility/:filename', async (c) => {
 	await database.toggleNewsletterVisibility(c.env, fileName);
 
 	return c.json({ success: true, file: fileName });
+});
+
+/* ######################### JOIN US ######################### */
+
+app.post('/subscribe-recruitment', async (c) => {
+	let body: { email?: unknown };
+
+	try {
+		body = await c.req.json();
+	} catch {
+		return c.json({ error: 'Malformed request.' }, 400);
+	}
+
+	const { email } = body;
+
+	if (typeof email !== 'string') {
+		return c.json({ error: 'Invalid request.' }, 400);
+	}
+
+	if (!isValidEmail(email)) {
+		return c.json({ error: 'Invalid email format.' }, 400);
+	}
+
+	try {
+		await database.addSubscription(c.env, {
+			email,
+			subscribed_at: new Date().toISOString(),
+			notification_count: 0,
+		});
+	} catch (error) {
+		console.error('Error adding recruitment subscription:', error);
+
+		return c.json({ error: 'Internal server error.' }, 500);
+	}
+
+	return c.json({ success: true, email }, 200);
+});
+
+
+/* to do: verificar */
+app.get('/all-subscriptions', async (c) => {
+    try {
+        const result = (await database.getSubscriptions(c.env)) as any;
+        return c.json(result);
+    } catch (error) {
+        console.error('Error fetching all subscriptions:', error);
+        return c.json({ error: 'Internal server error.' }, 500);
+    }
+});
+
+/* TO DO: verificar */
+app.patch('/increment-notification/:email', async (c) => {
+    const email = c.req.param('email');
+
+    if (!isValidEmail(email)) {
+        return c.json({ error: 'Invalid email format.' }, 400);
+    }
+
+    // verificar se email está na base de dados antes de incrementar
+    const subscriptions = (await database.getSubscriptions(c.env)) as any;
+    const subscriptionExists = subscriptions.some((sub: any) => sub.email === email);
+
+    if (!subscriptionExists) {
+        return c.json({ error: 'Email not found in subscriptions.' }, 404);
+    }
+
+    try {
+        await database.incrementNotificationCount(c.env, email);
+        return c.json({ success: true, email }, 200);
+    } catch (error) {
+        console.error('Error incrementing notification count:', error);
+        return c.json({ error: 'Internal server error.' }, 500);
+    }
 });
 
 export default app;

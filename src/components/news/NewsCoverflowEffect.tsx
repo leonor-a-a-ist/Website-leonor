@@ -1,5 +1,5 @@
-import React, { useState, useMemo, useEffect, useRef } from "react";
-import { WorkerNewsletter, getNewsletters } from "@/src/components/utils/FetchNewsletters";
+import React, { useState, useMemo, useRef } from "react";
+import { WorkerNewsletter } from "@/src/components/utils/FetchNewsletters";
 import NavigationButton from "@/src/components/news/NavigationButton";
 import Image from "next/image";
 

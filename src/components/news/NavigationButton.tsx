@@ -4,12 +4,14 @@ export default function NavigationButton({
   disabled = false,
   ariaLabel,
   variant = "default",
+  className = "",
 }: {
   direction: "prev" | "next";
   onClick: () => void;
   disabled?: boolean;
   ariaLabel: string;
   variant?: "default" | "modal";
+  className?: string;
 }) {
   const variants = {
     default: "bg-gray-800 bg-opacity-50 hover:bg-opacity-75",

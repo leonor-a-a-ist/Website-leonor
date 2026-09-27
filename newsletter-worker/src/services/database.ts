@@ -1,9 +1,11 @@
-/* Database services for managing newsletter data in D1 */
+/* Database services for managing data in D1 */
 
 // Cloudflare Workers Bindings
 type Bindings = {
 	DB: D1Database;
 };
+
+/* ######################### NEWSLETTERS ######################### */
 
 /* Inserts or updates a newsletter row in the D1 database */
 export async function insertNewsletter(
@@ -69,4 +71,30 @@ export async function deleteNewsletterRow(env: Bindings, fileKey: string) {
 
 export async function toggleNewsletterVisibility(env: Bindings, fileKey: string) {
 	return env.DB.prepare(`UPDATE newsletters SET hidden = NOT hidden WHERE file_key = ?`).bind(fileKey).run();
+}
+
+/* ######################### JOIN US ######################### */
+
+export async function addSubscription(
+	env: Bindings,
+	data: {
+		email: string;
+		subscribed_at: string;
+		notification_count: number;
+	},
+) {
+	return env.DB.prepare(
+		`INSERT OR REPLACE INTO recruitment_subscribers (email, subscribed_at, notification_count) 
+         VALUES (?, ?, ?)`,
+	)
+		.bind(data.email, data.subscribed_at, data.notification_count)
+		.run();
+}
+
+export async function getSubscriptions(env: Bindings) {
+    return env.DB.prepare(`SELECT * FROM recruitment_subscribers`).all();
+}
+
+export async function incrementNotificationCount(env: Bindings, email: string) {
+    return env.DB.prepare(`UPDATE recruitment_subscribers SET notification_count = notification_count + 1 WHERE email = ?`).bind(email).run();
 }

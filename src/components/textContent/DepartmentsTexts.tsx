@@ -189,7 +189,7 @@ const tecDepartmentsTexts: DepartmentCardData[] = [
         src: "/images/joinUs/pow/tech3.webp",
         alt: "tech3",
       },
-            {
+      {
         type: "image",
         src: "/images/joinUs/pow/tech4.webp",
         alt: "tech4",
@@ -346,6 +346,10 @@ const opDepartmentsTexts: DepartmentCardData[] = [
 ];
 
 export const joinUsCards = {
-  technical: tecDepartmentsTexts,
-  operational: opDepartmentsTexts,
+  technical: [...tecDepartmentsTexts].sort((a, b) =>
+    a.title.localeCompare(b.title, undefined, { sensitivity: "base" })
+  ),
+  operational: [...opDepartmentsTexts].sort((a, b) =>
+    a.title.localeCompare(b.title, undefined, { sensitivity: "base" })
+  ),
 };

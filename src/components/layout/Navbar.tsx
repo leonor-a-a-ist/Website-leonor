@@ -154,7 +154,7 @@ export default function MyNavbar() {
             className="h-full flex items-center max-[300px]:hidden"
             ariaLabel="Home"
           >
-            <div className="relative h-[8vh] w-[13vh]">
+            <div className="relative h-[8vh] w-[15vh] lg:h-[6vh] lg:w-[13vh]">
               <Image
                 src="/images/home/tlmoto_principal.webp"
                 alt="TLMoto"
