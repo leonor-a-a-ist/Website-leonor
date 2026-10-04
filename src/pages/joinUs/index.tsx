@@ -20,14 +20,14 @@ const TEXTS = {
 };
 
 const mainTitle = "text-[8.5vw] md:text-[6vw] lg:text-[4.5vw] xl:text-[3.5vw] 2xl:text-[3vw]";
-const h3Size = "text-[4.2vw] sm:text-[3vw] md:text-[2.2vw] lg:text-[1.7vw] 2xl:text-[1.5vw]";
 const h2Size = "text-[5vw] md:text-[3vw] lg:text-[2vw] 2xl:text-[1.7vw]";
-const normalTextSize = "text-[4vw] sm:text-[2.7vw] md:text-[2vw] lg:text-[1.5vw] 2xl:text-[1.2vw]";
+const h3Size = "text-[4.2vw] md:text-[2.2vw] lg:text-[1.7vw] 2xl:text-[1.5vw]";
+const normalTextSize = "text-[4vw] md:text-[2vw] lg:text-[1.5vw] 2xl:text-[1.2vw]";
 
 export default function JoinUs() {
   const [email, setEmail] = useState("");
   const t = TEXTS;
-  const closed = true; // change this to false when recruitment is open
+  const closed = false; // change this to false when recruitment is open
 
   async function handleSubscribe() {
     if (!email) return;

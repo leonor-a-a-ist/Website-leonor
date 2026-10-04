@@ -89,17 +89,8 @@ export default function DepartmentCarousel({ title, cards, onSelectDep }: Depart
       </div>
 
       <div className="hidden md:block">
-        <div
-          /* className="grid gap-[2vw] justify-center
-            grid-cols-[repeat(auto-fill,80vw)]
-            sm:grid-cols-[repeat(auto-fill,42vw)]
-            md:grid-cols-[repeat(auto-fill,30vw)]
-            lg:grid-cols-[repeat(auto-fill,25vw)]
-            xl:grid-cols-[repeat(auto-fill,23vw)]
-            2xl:grid-cols-[repeat(auto-fill,20vw)]" */
-          className="grid grid-cols-3 gap-[2vw]"
-        >
-          {cards.map((card, index) => (
+        <div className="grid grid-cols-3 gap-[2vw]">
+          {cards.map((card, _) => (
             <SingleCard card={card} isMobile={false} onClick={() => onSelectDep(card)} />
           ))}
         </div>

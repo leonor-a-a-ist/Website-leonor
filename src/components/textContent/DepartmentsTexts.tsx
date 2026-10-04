@@ -14,7 +14,7 @@ export interface DepartmentCardData {
   id: string;
   title: string;
   cardDescription: string;
-  popupDescription?: string;
+  popupDescription: string;
   subAreas?: { [key: string]: string };
   technologies?: string[];
   media: (
@@ -51,43 +51,43 @@ const tecDepartmentsTexts: DepartmentCardData[] = [
     media: [
       {
         type: "image",
-        src: "/images/joinUs/ac/ac.webp",
-        alt: "Aerodynamics and Cooling",
+        src: "/images/joinUs/ac/ac_team.webp",
+        alt: "Aerodynamics and Cooling Members",
       },
       {
         type: "image",
-        src: "/images/joinUs/ac/tech1.webp",
-        alt: "tech1",
+        src: "/images/joinUs/ac/cfd_stress.webp",
+        alt: "CFD simulation – Wall Shear Stress",
       },
       {
         type: "image",
-        src: "/images/joinUs/ac/tech2.webp",
-        alt: "tech2",
+        src: "/images/joinUs/ac/cfd_vel.webp",
+        alt: "CFD simulation – Velocity",
       },
       {
         type: "image",
-        src: "/images/joinUs/ac/tech3.webp",
-        alt: "tech3",
+        src: "/images/joinUs/ac/thermal.webp",
+        alt: "Thermal simulation",
       },
       {
         type: "image",
-        src: "/images/joinUs/ac/tech4.webp",
-        alt: "tech4",
+        src: "/images/joinUs/ac/flow.webp",
+        alt: "Aerodynamic flow visualization",
       },
       {
         type: "image",
-        src: "/images/joinUs/ac/tech5.webp",
-        alt: "tech5",
+        src: "/images/joinUs/ac/cool_test.webp",
+        alt: "Cooling system testing",
       },
       {
         type: "image",
-        src: "/images/joinUs/ac/tech6.webp",
-        alt: "tech6",
+        src: "/images/joinUs/ac/lamination.webp",
+        alt: "Carbon fiber lamination",
       },
       {
         type: "image",
-        src: "/images/joinUs/ac/tech7.webp",
-        alt: "tech7",
+        src: "/images/joinUs/ac/pre_cooling.webp",
+        alt: "Pre-cooling",
       },
     ],
     icon: Wind,
@@ -103,23 +103,23 @@ const tecDepartmentsTexts: DepartmentCardData[] = [
     media: [
       {
         type: "image",
-        src: "/images/joinUs/vd/dynamics.webp",
-        alt: "Vehicle Dynamics",
+        src: "/images/joinUs/vd/vd_team.webp",
+        alt: "Vehicle Dynamics Members",
       },
       {
         type: "image",
-        src: "/images/joinUs/vd/tech1.webp",
-        alt: "tech1",
+        src: "/images/joinUs/vd/adams.webp",
+        alt: "Adams simulation",
       },
       {
         type: "image",
-        src: "/images/joinUs/vd/tech3.webp",
-        alt: "tech3",
+        src: "/images/joinUs/vd/testing.webp",
+        alt: "Vehicle dynamics testing",
       },
       {
         type: "video",
         src: "/videos/joinUs/simAragon.mp4",
-        alt: "Aragon simulation",
+        alt: "VI-Grade simulation",
       },
     ],
     icon: Gauge,
@@ -135,23 +135,23 @@ const tecDepartmentsTexts: DepartmentCardData[] = [
     media: [
       {
         type: "image",
-        src: "/images/joinUs/eletro/eletronics.webp",
-        alt: "Electronics",
+        src: "/images/joinUs/eletro/eletronics_team.webp",
+        alt: "Electronics Members",
       },
       {
         type: "image",
-        src: "/images/joinUs/eletro/tech1.webp",
-        alt: "tech1",
+        src: "/images/joinUs/eletro/debugging.webp",
+        alt: "Debugging the electrical system",
       },
       {
         type: "image",
-        src: "/images/joinUs/eletro/tech2.webp",
-        alt: "tech2",
+        src: "/images/joinUs/eletro/wielding.webp",
+        alt: "Welding an electrical component",
       },
       {
         type: "image",
-        src: "/images/joinUs/eletro/tech4.webp",
-        alt: "tech4",
+        src: "/images/joinUs/eletro/altium.webp",
+        alt: "Electrical design in Altium",
       },
     ],
     icon: CircuitBoard,
@@ -171,28 +171,28 @@ const tecDepartmentsTexts: DepartmentCardData[] = [
     media: [
       {
         type: "image",
-        src: "/images/joinUs/pow/powertrain.webp",
-        alt: "Powertrain",
+        src: "/images/joinUs/pow/powertrain_team.webp",
+        alt: "Powertrain Members",
       },
       {
         type: "image",
-        src: "/images/joinUs/pow/tech1.webp",
-        alt: "tech1",
+        src: "/images/joinUs/pow/bp_wielding.webp",
+        alt: "Battery pack welding",
       },
       {
         type: "image",
-        src: "/images/joinUs/pow/tech2.webp",
-        alt: "tech2",
+        src: "/images/joinUs/pow/comsol.webp",
+        alt: "COMSOL simulation",
       },
       {
         type: "image",
-        src: "/images/joinUs/pow/tech3.webp",
-        alt: "tech3",
+        src: "/images/joinUs/pow/05_bp.webp",
+        alt: "TLM05e battery pack",
       },
       {
         type: "image",
-        src: "/images/joinUs/pow/tech4.webp",
-        alt: "tech4",
+        src: "/images/joinUs/pow/motor.webp",
+        alt: "Electric Motor",
       },
     ],
     icon: Cog,
@@ -210,23 +210,23 @@ const tecDepartmentsTexts: DepartmentCardData[] = [
     media: [
       {
         type: "image",
-        src: "/images/joinUs/structures/structures.webp",
-        alt: "Structures",
+        src: "/images/joinUs/structures/structures_team.webp",
+        alt: "Structures Members",
       },
       {
         type: "image",
-        src: "/images/joinUs/structures/tech2.webp",
-        alt: "tech2",
+        src: "/images/joinUs/structures/fem_sim.webp",
+        alt: "FEM simulation of the structural design",
       },
       {
         type: "image",
-        src: "/images/joinUs/structures/tech3.webp",
-        alt: "tech3",
+        src: "/images/joinUs/structures/machining.webp",
+        alt: "Machining a structural component",
       },
       {
         type: "image",
-        src: "/images/joinUs/structures/tech4.webp",
-        alt: "tech4",
+        src: "/images/joinUs/structures/tap_wielding.webp",
+        alt: "Welding a structural component",
       },
     ],
     icon: Blocks,
@@ -241,23 +241,23 @@ const tecDepartmentsTexts: DepartmentCardData[] = [
     media: [
       {
         type: "image",
-        src: "/images/joinUs/software/software.webp",
-        alt: "Software",
+        src: "/images/joinUs/software/software_team.webp",
+        alt: "Software Members",
       },
       {
         type: "image",
-        src: "/images/joinUs/software/tech1.webp",
-        alt: "tech1",
+        src: "/images/joinUs/software/TLCrab.webp",
+        alt: "TLCrab Calendar",
       },
       {
         type: "image",
-        src: "/images/joinUs/software/tech2.webp",
-        alt: "tech2",
+        src: "/images/joinUs/software/telemetry.webp",
+        alt: "Telemetry App Homepage",
       },
       {
         type: "image",
-        src: "/images/joinUs/software/tech3.webp",
-        alt: "tech3",
+        src: "/images/joinUs/software/website.webp",
+        alt: "Website Development",
       },
     ],
     icon: Code2,
@@ -275,18 +275,18 @@ const opDepartmentsTexts: DepartmentCardData[] = [
     media: [
       {
         type: "image",
-        src: "/images/joinUs/marketing/marketing.webp",
-        alt: "Marketing & Design",
+        src: "/images/joinUs/marketing/marketing_team.webp",
+        alt: "Marketing & Design Members",
       },
       {
         type: "image",
-        src: "/images/joinUs/marketing/tech1.webp",
-        alt: "tech1",
+        src: "/images/joinUs/marketing/event_coverage.webp",
+        alt: "Event media coverage",
       },
       {
         type: "image",
-        src: "/images/joinUs/marketing/tech2.webp",
-        alt: "tech2",
+        src: "/images/joinUs/marketing/worksession.webp",
+        alt: "Marketing Worksession",
       },
     ],
     icon: Palette,
@@ -301,18 +301,18 @@ const opDepartmentsTexts: DepartmentCardData[] = [
     media: [
       {
         type: "image",
-        src: "/images/joinUs/hr/hr.webp",
-        alt: "Human Resources",
+        src: "/images/joinUs/hr/hr_team.webp",
+        alt: "Human Resources Members",
       },
       {
         type: "image",
-        src: "/images/joinUs/hr/tech1.webp",
-        alt: "tech1",
+        src: "/images/joinUs/hr/team_motostudent.webp",
+        alt: "Team at Motostudent",
       },
       {
         type: "image",
-        src: "/images/joinUs/hr/tech2.webp",
-        alt: "tech2",
+        src: "/images/joinUs/hr/team_event.webp",
+        alt: "Team Event",
       },
     ],
     icon: UsersRound,
@@ -327,18 +327,18 @@ const opDepartmentsTexts: DepartmentCardData[] = [
     media: [
       {
         type: "image",
-        src: "/images/joinUs/management/management.webp",
-        alt: "Management",
+        src: "/images/joinUs/management/management_team.webp",
+        alt: "Management Members",
       },
       {
         type: "image",
-        src: "/images/joinUs/management/tech1.webp",
-        alt: "tech1",
+        src: "/images/joinUs/management/websummit.webp",
+        alt: "TLMoto at Web Summit",
       },
       {
         type: "image",
-        src: "/images/joinUs/management/tech2.webp",
-        alt: "tech2",
+        src: "/images/joinUs/management/sponsors_merch.webp",
+        alt: "TLMoto sponsor merchandise",
       },
     ],
     icon: ChartNoAxesCombined,

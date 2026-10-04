@@ -92,9 +92,9 @@ export async function addSubscription(
 }
 
 export async function getSubscriptions(env: Bindings) {
-    return env.DB.prepare(`SELECT * FROM recruitment_subscribers`).all();
+	return env.DB.prepare(`SELECT * FROM recruitment_subscribers`).all();
 }
 
 export async function incrementNotificationCount(env: Bindings, email: string) {
-    return env.DB.prepare(`UPDATE recruitment_subscribers SET notification_count = notification_count + 1 WHERE email = ?`).bind(email).run();
+	return env.DB.prepare(`UPDATE recruitment_subscribers SET notification_count = notification_count + 1 WHERE email = ?`).bind(email).run();
 }

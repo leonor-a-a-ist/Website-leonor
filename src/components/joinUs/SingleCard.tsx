@@ -27,24 +27,24 @@ export default function SingleCard({ card, isMobile, onClick }: DepartmentCardPr
         onClick={onClick}
       >
         {/* Frente */}
-        <div className="absolute flex flex-col inset-0 rounded-lg xl:rounded-2xl bg-gray-800 [backface-visibility:hidden] items-center justify-center gap-[1vh] xl:gap-[2vh]">
+        <div className="absolute flex flex-col inset-0 rounded-lg xl:rounded-2xl bg-gray-800 [backface-visibility:hidden] items-center justify-center gap-[1vh]">
           {card.icon && <card.icon size={70} strokeWidth={1.5} />}
 
-          <h3 className="text-[4.2vw] sm:text-[3vw] md:text-[2.2vw] lg:text-[1.7vw] 2xl:text-[1.5vw] font-semibold text-white text-center">
+          <h3 className="text-[4.2vw] sm:text-[3vw] md:text-[2.2vw] lg:text-[1.7vw] 2xl:text-[1.5vw] font-semibold text-center">
             {card.title}
           </h3>
 
           {isMobile && (
-            <div className="absolute bottom-3 right-3 bg-black/60 px-3 py-1 rounded-full text-white text-[10px] backdrop-blur-sm uppercase shadow-md">
+            <div className="absolute bottom-3 right-3 px-3 py-1 rounded-full text-[10px] bg-black/60 backdrop-blur-sm uppercase shadow-md">
               Tap info
             </div>
           )}
         </div>
 
         {/* Verso */}
-        <div className="absolute inset-0 rounded-lg xl:rounded-2xl [transform:rotateY(180deg)] [backface-visibility:hidden] bg-gray-900 flex flex-col justify-center items-center p-3 text-center border border-white/10 pointer-events-auto">
+        <div className="absolute inset-0 flex flex-col justify-center items-center rounded-lg xl:rounded-2xl [transform:rotateY(180deg)] [backface-visibility:hidden] bg-gray-900 p-3 text-center border border-gray-800 pointer-events-auto">
           <div className="overflow-y-auto scrollbar-thin scrollbar-thumb-gray-600 scrollbar-track-transparent">
-            <p className="text-[4vw] md:text-[1.7vw] lg:text-[1.5vw] 2xl:text-[1.2vw] text-gray-200">
+            <p className="text-[4vw] md:text-[1.8vw] lg:text-[1.5vw] 2xl:text-[1.2vw] text-gray-200">
               {card.cardDescription}
               {areas && (
                 <>
