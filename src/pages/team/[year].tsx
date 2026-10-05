@@ -131,7 +131,7 @@ export default function Team({ teamData, year, allYears }: TeamProps) {
       />
       <MyDefaultPage>
         {/* pt-24 -> 10vh */}
-        <div className="relative min-h-screen pt-[6vh] xl:pt-[10vh] mb-[3vh] lg:mb-0">
+        <div className="relative min-h-screen pt-[6vh] xl:pt-[10vh] mb-[3vh]">
           {/* Navigation Header - py-8 -> 3.5vh */}
           <div className="flex items-center justify-center py-[3.5vh] h-[27vh] ">
             <button
@@ -224,7 +224,7 @@ export default function Team({ teamData, year, allYears }: TeamProps) {
                     src={focusedCardImage}
                     alt="Focused Image"
                     loading="lazy"
-                    className="border-[0.3vw] border-black w-[25vh] md:w-[30vh] lg:w-[35vh] xl:w-[40vh] max-w-[35vw] object-contain shadow-[0_0_2vw_0.5vw_rgba(6,90,123,1)]"
+                    className="border-[0.3vw] border-black w-[25vh] md:w-[30vh] lg:w-[35vh] xl:w-[38vh] max-w-[35vw] object-contain shadow-[0_0_2vw_0.5vw_rgba(6,90,123,1)]"
                   />
                   <div className="mt-[2vh] text-center h-[6vh] flex items-center justify-center">
                     {focusedMember && focusedMember.linkedin ? (

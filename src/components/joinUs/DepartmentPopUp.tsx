@@ -129,7 +129,9 @@ export default function DepartmentPopUp({
                     />
                   </div>
 
-                  <p className={`${descriptionTextSize} text-justify `}>{department.popupDescription}</p>
+                  <p className={`${descriptionTextSize} text-justify `}>
+                    {department.popupDescription}
+                  </p>
 
                   {/* Ensures the following content starts below the floated image by forcing a new line */}
                   <div className="clear-both" />
@@ -144,7 +146,9 @@ export default function DepartmentPopUp({
                   <div className="space-y-8">
                     {Object.entries(department.subAreas).map(([subArea, description]) => (
                       <div key={subArea} className="border-l-2 border-gray-300 pl-5 sm:pl-6">
-                        <h3 className={`mb-2 ${descriptionTextSize} text-justify font-semibold text-black`}>
+                        <h3
+                          className={`mb-2 ${descriptionTextSize} text-justify font-semibold text-black`}
+                        >
                           {subArea}
                         </h3>
 
