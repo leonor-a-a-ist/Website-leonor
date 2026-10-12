@@ -6,6 +6,7 @@ import SeoHead from "@/src/components/layout/SeoHead";
 import Timeline from "@/src/components/history/Timeline";
 import TiltedCard from "@/src/components/extras/TiltedCard";
 import MyDefaultPage from "../../components/DefaultPage";
+import { createPortal } from "react-dom";
 
 type TimelineEventWithImages = TimelineDataItem & { images: string[] };
 
@@ -40,6 +41,11 @@ export default function History({
   selectedYear: string;
 }) {
   const [fullscreenImage, setFullscreenImage] = useState<string | null>(null);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   // Reset fullscreen image when the selected year changes
   useEffect(() => {
@@ -146,10 +152,15 @@ export default function History({
               );
             })}
           </motion.div>
+        </div>
+      </MyDefaultPage>
+
+      {mounted &&
+        createPortal(
           <AnimatePresence>
             {fullscreenImage && (
               <motion.div
-                className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-8 cursor-pointer"
+                className="fixed inset-0 z-[1001] flex items-center justify-center bg-black/90 p-8 cursor-pointer"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
@@ -166,9 +177,9 @@ export default function History({
                 />
               </motion.div>
             )}
-          </AnimatePresence>
-        </div>
-      </MyDefaultPage>
+          </AnimatePresence>,
+          document.body
+        )}
     </>
   );
 }
